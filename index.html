@@ -1,1035 +1,727 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pratik Dabhi — Security Consultant at Deloitte USI | Penetration Tester | Bug Bounty Hunter | Bugcrowd Top 250 | Synack Red Team">
-  <title>Pratik Dabhi — Security Consultant | Penetration Tester</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description"
+            content="Pratik Dabhi — Security Consultant at Deloitte USI | Penetration Tester | Bug Bounty Hunter | Bugcrowd Top 250 | Synack Red Team">
+        <title>Pratik Dabhi — Security Consultant | Penetration Tester</title>
 
-  <style>
-    :root {
-      --navy:   #0A2342;
-      --blue:   #1A56A0;
-      --accent: #2176FF;
-      --green:  #10B981;
-      --gray:   #6B7280;
-      --light:  #F8FAFC;
-      --white:  #ffffff;
-      --border: #E5E7EB;
-    }
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;600&display=swap"
+            rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap"
+            rel="stylesheet">
+        <!-- Bootstrap 5 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Hugeicons -->
+        <link href="https://use.hugeicons.com/font/icons.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+    </head>
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    <body>
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--white);
-      color: #374151;
-      line-height: 1.7;
-    }
-
-    /* ── NAVBAR ── */
-    .navbar-custom {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(10,35,66,0.97);
-      backdrop-filter: blur(10px);
-      padding: 0;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-    }
-    .navbar-custom .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px;
-    }
-    .navbar-custom .brand {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent); font-size: 18px; font-weight: 600;
-      text-decoration: none;
-    }
-    .navbar-custom .brand span { color: #fff; }
-    .nav-links { display: flex; gap: 6px; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.75); text-decoration: none;
-      font-size: 13px; font-weight: 500; padding: 6px 12px;
-      border-radius: 6px; transition: all .2s;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: #fff; background: rgba(255,255,255,0.12);
-    }
-    .nav-toggle {
-      display: none; background: none; border: none;
-      color: #fff; font-size: 22px; cursor: pointer;
-    }
-    .cv-btn {
-      background: var(--accent); color: #fff; border: none;
-      padding: 8px 18px; border-radius: 8px; font-size: 13px;
-      font-weight: 600; cursor: pointer; text-decoration: none;
-      transition: background .2s;
-    }
-    .cv-btn:hover { background: #1460d0; color: #fff; }
-
-    /* ── HERO ── */
-    #home {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, #102d52 60%, #0f3a6e 100%);
-      display: flex; align-items: center;
-      padding: 80px 0 40px;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
-    }
-    .hero-img-wrap {
-      position: relative; flex-shrink: 0;
-    }
-    .hero-img-wrap img {
-      width: 220px; height: 220px; object-fit: cover;
-      border-radius: 50%; border: 4px solid var(--accent);
-      box-shadow: 0 0 0 8px rgba(33,118,255,0.2);
-    }
-    .hero-text { flex: 1; min-width: 280px; }
-    .hero-greeting {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent); font-size: 14px; margin-bottom: 10px;
-    }
-    .hero-name {
-      font-size: 52px; font-weight: 800; color: #fff;
-      line-height: 1.1; margin-bottom: 14px;
-    }
-    .hero-name span { color: var(--accent); }
-    .hero-title {
-      color: rgba(255,255,255,0.7); font-size: 15px;
-      line-height: 1.8; margin-bottom: 20px;
-    }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .hb {
-      padding: 5px 14px; border-radius: 20px; font-size: 12px;
-      font-weight: 700; letter-spacing: .5px;
-    }
-    .hb-blue  { background: var(--accent);   color: #fff; }
-    .hb-green { background: var(--green);    color: #fff; }
-    .hb-dark  { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .hero-social { display: flex; gap: 12px; flex-wrap: wrap; }
-    .social-ic {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 16px; text-decoration: none;
-      transition: all .2s;
-    }
-    .social-ic:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); }
-
-    /* ── SECTIONS ── */
-    section { padding: 80px 0; }
-    section:nth-child(even) { background: var(--light); }
-    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section-tag {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent); font-size: 12px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: 34px; font-weight: 800; color: var(--navy);
-      margin-bottom: 10px; line-height: 1.2;
-    }
-    .section-line {
-      width: 50px; height: 4px; background: var(--accent);
-      border-radius: 2px; margin-bottom: 40px;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-    .about-text { font-size: 15px; line-height: 1.9; color: #4B5563; }
-    .about-text p { margin-bottom: 16px; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .stat-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 20px; text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .stat-num { font-size: 32px; font-weight: 800; color: var(--navy); }
-    .stat-lbl { font-size: 13px; color: var(--gray); margin-top: 4px; }
-
-    /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .skill-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow .2s, transform .2s;
-    }
-    .skill-card:hover { box-shadow: 0 8px 24px rgba(26,86,160,0.12); transform: translateY(-2px); }
-    .skill-card i { font-size: 28px; color: var(--accent); margin-bottom: 14px; display: block; }
-    .skill-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .stag {
-      background: #EFF6FF; color: var(--blue); font-size: 11px;
-      font-weight: 600; padding: 3px 10px; border-radius: 12px;
-    }
-
-    /* ── EXPERIENCE ── */
-    .exp-timeline { position: relative; }
-    .exp-timeline::before {
-      content: ''; position: absolute; left: 18px; top: 0; bottom: 0;
-      width: 2px; background: var(--border);
-    }
-    .exp-item {
-      display: flex; gap: 24px; margin-bottom: 36px; position: relative;
-    }
-    .exp-dot {
-      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
-      background: var(--accent); border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 14px; z-index: 1;
-    }
-    .exp-dot.gray { background: var(--gray); box-shadow: 0 0 0 2px var(--gray); }
-    .exp-body {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 20px 24px; flex: 1;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
-    .exp-company { font-size: 17px; font-weight: 700; color: var(--navy); }
-    .exp-date { font-size: 12px; color: var(--gray); background: var(--light); padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
-    .exp-role { font-size: 13px; color: var(--accent); font-weight: 600; margin: 4px 0 8px; }
-    .exp-desc { font-size: 14px; color: #4B5563; line-height: 1.7; }
-    .badge-chip {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      padding: 2px 10px; border-radius: 20px; margin-left: 8px;
-      vertical-align: middle;
-    }
-    .chip-blue  { background: #DBEAFE; color: var(--blue); }
-    .chip-green { background: #D1FAE5; color: #065F46; }
-    .chip-gold  { background: #FEF3C7; color: #92400E; }
-
-    /* ── HALL OF FAME ── */
-    .hof-intro { font-size: 15px; color: var(--gray); margin-bottom: 28px; }
-    .hof-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .hof-chip {
-      padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
-      cursor: default; transition: transform .15s;
-    }
-    .hof-chip:hover { transform: translateY(-2px); }
-    .hof-major { background: var(--navy); color: #fff; }
-    .hof-regular { background: #EFF6FF; color: var(--navy); border: 1px solid #BFDBFE; }
-    .hof-private { background: #F3F4F6; color: var(--gray); border: 1px solid var(--border); }
-
-    /* ── CERTIFICATIONS ── */
-    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .cert-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 18px 20px;
-      display: flex; align-items: flex-start; gap: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow .2s;
-    }
-    .cert-card:hover { box-shadow: 0 6px 20px rgba(26,86,160,0.1); }
-    .cert-icon {
-      width: 40px; height: 40px; background: #EFF6FF; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 18px; flex-shrink: 0;
-    }
-    .cert-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-    .cert-issuer { font-size: 12px; color: var(--gray); }
-    .cert-id { font-size: 11px; color: #9CA3AF; font-family: 'JetBrains Mono', monospace; margin-top: 3px; }
-    .new-chip { background: var(--green); color: #fff; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 8px; margin-left: 6px; vertical-align: middle; }
-
-    /* ── TALKS ── */
-    .talks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .talk-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 22px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .talk-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .talk-card p { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
-    .talk-link {
-      color: var(--accent); font-size: 13px; font-weight: 600;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
-    }
-    .talk-link:hover { text-decoration: underline; }
-
-    /* ── CONTENT CREATION ── */
-    .cc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .cc-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px; text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow .2s, transform .2s;
-    }
-    .cc-card:hover { box-shadow: 0 10px 30px rgba(26,86,160,0.12); transform: translateY(-4px); }
-    .cc-icon { font-size: 38px; margin-bottom: 14px; }
-    .cc-platform { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
-    .cc-count { font-size: 38px; font-weight: 800; color: var(--accent); line-height: 1; margin: 10px 0 4px; }
-    .cc-label { font-size: 13px; color: var(--gray); margin-bottom: 14px; }
-    .cc-desc { font-size: 13px; color: #4B5563; line-height: 1.6; margin-bottom: 18px; }
-    .cc-link {
-      display: inline-block; background: var(--accent); color: #fff;
-      padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: background .2s;
-    }
-    .cc-link:hover { background: #1460d0; color: #fff; }
-
-    /* ── EDUCATION ── */
-    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .edu-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px;
-      border-top: 4px solid var(--accent);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .edu-card i { color: var(--accent); font-size: 22px; margin-bottom: 12px; }
-    .edu-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .edu-card .inst { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 6px; }
-    .edu-card .yr { font-size: 12px; color: var(--gray); }
-
-    /* ── BLOGS ── */
-    .blogs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .blog-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow .2s, transform .2s;
-      text-decoration: none;
-    }
-    .blog-card:hover { box-shadow: 0 8px 24px rgba(26,86,160,0.12); transform: translateY(-3px); }
-    .blog-img { width: 100%; height: 160px; object-fit: cover; background: #EFF6FF; display: flex; align-items: center; justify-content: center; }
-    .blog-img img { width: 100%; height: 160px; object-fit: cover; }
-    .blog-body { padding: 16px 18px; }
-    .blog-body h4 { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.5; margin-bottom: 8px; }
-    .blog-body span { font-size: 12px; color: var(--accent); font-weight: 600; }
-
-    /* ── CONTACT ── */
-    #contact { background: var(--navy); }
-    #contact .section-title { color: #fff; }
-    #contact .section-tag { color: var(--accent); }
-    #contact .section-line { background: var(--accent); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-    .contact-info-item {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
-    }
-    .contact-info-item .ci-icon {
-      width: 44px; height: 44px; background: rgba(255,255,255,0.1);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 18px; flex-shrink: 0;
-    }
-    .contact-info-item p { color: rgba(255,255,255,0.7); font-size: 13px; margin: 0; }
-    .contact-info-item a { color: #fff; font-weight: 600; text-decoration: none; font-size: 15px; }
-    .contact-info-item a:hover { color: var(--accent); }
-    .contact-social-title { color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600; margin-bottom: 14px; letter-spacing: 1px; text-transform: uppercase; }
-    .contact-socials { display: flex; flex-wrap: wrap; gap: 10px; }
-    .cs-btn {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-      color: #fff; padding: 8px 16px; border-radius: 8px;
-      font-size: 13px; font-weight: 600; text-decoration: none;
-      transition: all .2s;
-    }
-    .cs-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #06142a; color: rgba(255,255,255,0.4);
-      text-align: center; padding: 20px;
-      font-size: 13px;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* ── MOBILE NAV ── */
-    .mobile-menu {
-      display: none; position: fixed; top: 60px; left: 0; right: 0;
-      background: rgba(10,35,66,0.98); z-index: 999;
-      padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block; color: rgba(255,255,255,0.8); text-decoration: none;
-      padding: 10px 0; font-size: 14px; font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .mobile-menu a:hover { color: var(--accent); }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .nav-links, .cv-btn { display: none; }
-      .nav-toggle { display: block; }
-      .hero-name { font-size: 36px; }
-      .hero-img-wrap img { width: 160px; height: 160px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .skills-grid, .cc-grid, .edu-grid { grid-template-columns: 1fr 1fr; }
-      .cert-grid, .talks-grid, .blogs-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .skills-grid, .cc-grid, .edu-grid, .cert-grid { grid-template-columns: 1fr; }
-      .hero-inner { flex-direction: column; text-align: center; gap: 30px; }
-      .hero-social { justify-content: center; }
-      .hero-badges { justify-content: center; }
-      .section-title { font-size: 26px; }
-      section { padding: 56px 0; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- ── NAVBAR ── -->
-<nav class="navbar-custom">
-  <div class="nav-inner">
-    <a href="#home" class="brand">pratik<span>dabhi</span><span style="color:var(--accent);">.</span></a>
-    <ul class="nav-links">
-      <li><a href="#home"   class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#hall">Hall of Fame</a></li>
-      <li><a href="#certs">Certs</a></li>
-      <li><a href="#talks">Talks</a></li>
-      <li><a href="#content">Content</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#blogs">Blogs</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="Pratik_Dabhi_Pentest_Resume.pdf" target="_blank" class="cv-btn"><i class="fa fa-download" style="margin-right:6px;"></i>Download CV</a>
-    <button class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home"       onclick="closeMenu()">Home</a>
-  <a href="#about"      onclick="closeMenu()">About</a>
-  <a href="#experience" onclick="closeMenu()">Experience</a>
-  <a href="#hall"       onclick="closeMenu()">Hall of Fame</a>
-  <a href="#certs"      onclick="closeMenu()">Certifications</a>
-  <a href="#talks"      onclick="closeMenu()">Talks &amp; Sessions</a>
-  <a href="#content"    onclick="closeMenu()">Content Creation</a>
-  <a href="#education"  onclick="closeMenu()">Education</a>
-  <a href="#blogs"      onclick="closeMenu()">Blogs</a>
-  <a href="#contact"    onclick="closeMenu()">Contact</a>
-</div>
-
-<!-- ── HERO ── -->
-<section id="home">
-  <div class="hero-inner">
-    <div class="hero-img-wrap">
-      <img src="img/user.jpg" alt="Pratik Dabhi" onerror="this.style.display='none'">
-    </div>
-    <div class="hero-text">
-      <p class="hero-greeting">&gt; Hello, World!</p>
-      <h1 class="hero-name">I'm <span>Pratik</span><br>Dabhi</h1>
-      <p class="hero-title">
-        Security Consultant @ Deloitte USI &nbsp;·&nbsp; Penetration Tester &nbsp;·&nbsp;
-        Bug Bounty Hunter &nbsp;·&nbsp; Synack Red Teamer &nbsp;·&nbsp;
-        YouTuber (26K) &nbsp;·&nbsp; Instagram (52K) &nbsp;·&nbsp; Speaker
-      </p>
-      <div class="hero-badges">
-        <span class="hb hb-blue">PNPT</span>
-        <span class="hb hb-blue">eWPTXv2</span>
-        <span class="hb hb-blue">eCPPTv2</span>
-        <span class="hb hb-blue">CEH Master</span>
-        <span class="hb hb-blue">Burp Suite CP</span>
-        <span class="hb hb-green">100+ Companies Secured</span>
-        <span class="hb hb-dark">5+ Years Experience</span>
-      </div>
-      <div class="hero-social">
-        <a href="https://x.com/impratikdabhi" target="_blank" class="social-ic" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="social-ic" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/pratikmdabhi/" target="_blank" class="social-ic" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank" class="social-ic" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://medium.com/@impratikdabhi" target="_blank" class="social-ic" title="Medium"><i class="fab fa-medium"></i></a>
-        <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank" class="social-ic" title="Bugcrowd"><i class="fas fa-bug"></i></a>
-        <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank" class="social-ic" title="YesWeHack"><i class="fas fa-shield-halved"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="section-inner">
-    <p class="section-tag">// 02. about</p>
-    <h2 class="section-title">About Me</h2>
-    <div class="section-line"></div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a passionate Cyber Security professional with <strong>5+ years of professional experience</strong> as a Security Consultant at <strong>Deloitte USI</strong>. I specialise in Web Application, API, Mobile (Android &amp; iOS), Network, and Thick Client penetration testing — delivering end-to-end security assessments for global enterprise clients.</p>
-        <p>I conduct Architectural Reviews and Secure Code Reviews, and produce clear, risk-rated vulnerability reports (CVSS/OWASP) for executive and technical audiences. My toolkit includes <strong>Burp Suite, Metasploit, Nmap, Nessus, Fortify, WebInspect, HCL AppScan, Frida, MobSF, and Kali Linux</strong>.</p>
-        <p>As an active Bug Bounty Hunter, I'm a member of the elite <strong>Synack Red Team</strong>, ranked <strong>Top 250 on Bugcrowd</strong>, <strong>Top 50 on Yogosha</strong>, and <strong>Top 100 on YesWeHack</strong>. I've responsibly disclosed vulnerabilities across <strong>100+ organisations</strong> and earned Hall of Fame recognitions from Microsoft, Apple, Google, Nokia, Intel, Pinterest, and more.</p>
-        <a href="Pratik_Dabhi_Pentest_Resume.pdf" target="_blank" class="cv-btn" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;">
-          <i class="fas fa-file-pdf"></i> Download Resume
-        </a>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">5+</div>
-          <div class="stat-lbl">Years Professional Experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">100+</div>
-          <div class="stat-lbl">Companies Secured</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">Top 250</div>
-          <div class="stat-lbl">Bugcrowd All-Time</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">78K+</div>
-          <div class="stat-lbl">Social Media Followers</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SKILLS ── -->
-<section id="skills">
-  <div class="section-inner">
-    <p class="section-tag">// 02b. skills</p>
-    <h2 class="section-title">Core Skills</h2>
-    <div class="section-line"></div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <i class="fas fa-globe"></i>
-        <h4>Penetration Testing</h4>
-        <div class="skill-tags">
-          <span class="stag">Web Application</span>
-          <span class="stag">API</span>
-          <span class="stag">Mobile (Android/iOS)</span>
-          <span class="stag">Network</span>
-          <span class="stag">Thick Client</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-wrench"></i>
-        <h4>Security Tools</h4>
-        <div class="skill-tags">
-          <span class="stag">Burp Suite</span>
-          <span class="stag">Metasploit</span>
-          <span class="stag">Nmap</span>
-          <span class="stag">Nessus</span>
-          <span class="stag">Fortify</span>
-          <span class="stag">WebInspect</span>
-          <span class="stag">HCL AppScan</span>
-          <span class="stag">Frida</span>
-          <span class="stag">MobSF</span>
-          <span class="stag">Kali Linux</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-file-shield"></i>
-        <h4>Competencies</h4>
-        <div class="skill-tags">
-          <span class="stag">VAPT</span>
-          <span class="stag">Code Review</span>
-          <span class="stag">Threat Modelling</span>
-          <span class="stag">Bug Bounty</span>
-          <span class="stag">Risk Assessment</span>
-          <span class="stag">Client Reporting</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── EXPERIENCE ── -->
-<section id="experience">
-  <div class="section-inner">
-    <p class="section-tag">// 03. experience</p>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-    <div class="exp-timeline">
-
-      <div class="exp-item">
-        <div class="exp-dot"><i class="fas fa-building"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Deloitte USI <span class="badge-chip chip-green">Current</span></div>
-              <div class="exp-role">Security Consultant — Solution Delivery Associate</div>
+        <!-- ── NAVBAR ── -->
+        <nav class="navbar-custom">
+            <div class="nav-inner">
+                <a href="#home" class="brand">pratik<span>dabhi</span><span style="color:var(--accent);">.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#hall">Hall of Fame</a></li>
+                    <li><a href="#certs">Certs</a></li>
+                    <li><a href="#talks">Talks</a></li>
+                    <li><a href="#content">Content</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="Pratik_Dabhi_Pentest_Resume.pdf" target="_blank" class="cv-btn"><i class="hgi-stroke hgi-download-01"
+                        style="margin-right:6px;"></i>Download CV</a>
+                <button class="nav-toggle" onclick="toggleMenu()"><i class="hgi-stroke hgi-menu-01"></i></button>
             </div>
-            <span class="exp-date">May 2023 – Present · Pune</span>
-          </div>
-          <p class="exp-desc">Lead end-to-end penetration testing engagements across Web Applications, APIs, Mobile (Android/iOS), Network, and Thick Client environments for global enterprise clients. Conduct Architectural &amp; Secure Code Reviews. Deliver risk-rated reports (CVSS/OWASP) for executive and technical audiences; drive remediation verification and client engagement throughout the lifecycle.</p>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="closeMenu()">Home</a>
+            <a href="#about" onclick="closeMenu()">About</a>
+            <a href="#experience" onclick="closeMenu()">Experience</a>
+            <a href="#hall" onclick="closeMenu()">Hall of Fame</a>
+            <a href="#certs" onclick="closeMenu()">Certifications</a>
+            <a href="#talks" onclick="closeMenu()">Talks &amp; Sessions</a>
+            <a href="#content" onclick="closeMenu()">Content Creation</a>
+            <a href="#education" onclick="closeMenu()">Education</a>
+            <a href="#blogs" onclick="closeMenu()">Blogs</a>
+            <a href="#contact" onclick="closeMenu()">Contact</a>
         </div>
-      </div>
 
-      <div class="exp-item">
-        <div class="exp-dot"><i class="fas fa-building"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Deloitte USI</div>
-              <div class="exp-role">Security Analyst — Cyber &amp; Strategic Risk Advisory</div>
+        <!-- ── HERO ── -->
+        <section id="home">
+            <div class="hero-inner">
+                <div class="hero-img-wrap">
+                    <img src="img/user.jpg" alt="Pratik Dabhi" onerror="this.style.display='none'">
+                </div>
+                <div class="hero-text">
+                    <p class="hero-greeting">&gt; Hello, World!</p>
+                    <h1 class="hero-name">I'm <span>Pratik</span><br>Dabhi</h1>
+                    <p class="hero-title">
+                        Security Consultant @ Deloitte USI &nbsp;·&nbsp; Penetration Tester &nbsp;·&nbsp;
+                        Bug Bounty Hunter &nbsp;·&nbsp; Synack Red Teamer &nbsp;·&nbsp;
+                        YouTuber (26K) &nbsp;·&nbsp; Instagram (52K) &nbsp;·&nbsp; Speaker
+                    </p>
+                    <div class="hero-badges">
+                        <span class="hb hb-blue">PNPT</span>
+                        <span class="hb hb-blue">eWPTXv2</span>
+                        <span class="hb hb-blue">eCPPTv2</span>
+                        <span class="hb hb-blue">CEH Master</span>
+                        <span class="hb hb-blue">Burp Suite CP</span>
+                        <span class="hb hb-green">100+ Companies Secured</span>
+                        <span class="hb hb-dark">5+ Years Experience</span>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://x.com/impratikdabhi" target="_blank" class="social-ic" title="Twitter / X"><i
+                                class="hgi-stroke hgi-new-twitter"></i></a>
+                        <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="social-ic"
+                            title="Instagram"><i class="hgi-stroke hgi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/pratikmdabhi/" target="_blank" class="social-ic"
+                            title="LinkedIn"><i class="hgi-stroke hgi-linkedin-01"></i></a>
+                        <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank"
+                            class="social-ic" title="YouTube"><i class="hgi-stroke hgi-youtube"></i></a>
+                        <a href="https://medium.com/@impratikdabhi" target="_blank" class="social-ic" title="Medium"><i
+                                class="hgi-stroke hgi-medium"></i></a>
+                        <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank" class="social-ic"
+                            title="Bugcrowd"><i class="hgi-stroke hgi-bug-01"></i></a>
+                        <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank" class="social-ic"
+                            title="YesWeHack"><i class="hgi-stroke hgi-shield-half"></i></a>
+                    </div>
+                </div>
             </div>
-            <span class="exp-date">Jul 2021 – May 2023 · Pune</span>
-          </div>
-          <p class="exp-desc">Performed manual &amp; automated penetration tests on Web Applications and APIs; identified injection flaws, authentication bypasses, and business logic vulnerabilities. Conducted Secure Code Reviews; collaborated closely with client teams on risk prioritisation and remediation.</p>
-        </div>
-      </div>
+        </section>
 
-      <div class="exp-item">
-        <div class="exp-dot"><i class="fas fa-building"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Deloitte USI</div>
-              <div class="exp-role">Technology Analyst</div>
+        <!-- ── ABOUT ── -->
+        <section id="about">
+            <div class="section-inner">
+                <p class="section-tag">// 02. about</p>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I'm a passionate Cyber Security professional with <strong>5+ years of professional
+                                experience</strong> as a Security Consultant at <strong>Deloitte USI</strong>. I
+                            specialise in Web Application, API, Mobile (Android &amp; iOS), Network, and Thick Client
+                            penetration testing — delivering end-to-end security assessments for global enterprise
+                            clients.</p>
+                        <p>I conduct Architectural Reviews and Secure Code Reviews, and produce clear, risk-rated
+                            vulnerability reports (CVSS/OWASP) for executive and technical audiences. My toolkit
+                            includes <strong>Burp Suite, Metasploit, Nmap, Nessus, Fortify, WebInspect, HCL AppScan,
+                                Frida, MobSF, and Kali Linux</strong>.</p>
+                        <p>As an active Bug Bounty Hunter, I'm a member of the elite <strong>Synack Red Team</strong>,
+                            ranked <strong>Top 250 on Bugcrowd</strong>, <strong>Top 50 on Yogosha</strong>, and
+                            <strong>Top 100 on YesWeHack</strong>. I've responsibly disclosed vulnerabilities across
+                            <strong>100+ organisations</strong> and earned Hall of Fame recognitions from Microsoft,
+                            Apple, Google, Nokia, Intel, Pinterest, and more.
+                        </p>
+                        <a href="Pratik_Dabhi_Pentest_Resume.pdf" target="_blank" class="cv-btn"
+                            style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;">
+                            <i class="hgi-stroke hgi-pdf-01"></i> Download Resume
+                        </a>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-num">5+</div>
+                            <div class="stat-lbl">Years Professional Experience</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">100+</div>
+                            <div class="stat-lbl">Companies Secured</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">Top 250</div>
+                            <div class="stat-lbl">Bugcrowd All-Time</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">78K+</div>
+                            <div class="stat-lbl">Social Media Followers</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="exp-date">Jan 2021 – Jun 2021 · Hyderabad</span>
-          </div>
-          <p class="exp-desc">Web Application &amp; API Penetration Testing with structured vulnerability reporting and PoC documentation.</p>
-        </div>
-      </div>
+        </section>
 
-      <div class="exp-item">
-        <div class="exp-dot"><i class="fas fa-crosshairs"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Synack Red Team <span class="badge-chip chip-gold">Elite</span></div>
-              <div class="exp-role">Red Team Member</div>
+        <!-- ── SKILLS ── -->
+        <section id="skills">
+            <div class="section-inner">
+                <p class="section-tag">// 02b. skills</p>
+                <h2 class="section-title">Core Skills</h2>
+                <div class="section-line"></div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="hgi-stroke hgi-globe"></i>
+                        <h4>Penetration Testing</h4>
+                        <div class="skill-tags">
+                            <span class="stag">Web Application</span>
+                            <span class="stag">API</span>
+                            <span class="stag">Mobile (Android/iOS)</span>
+                            <span class="stag">Network</span>
+                            <span class="stag">Thick Client</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="hgi-stroke hgi-wrench-01"></i>
+                        <h4>Security Tools</h4>
+                        <div class="skill-tags">
+                            <span class="stag">Burp Suite</span>
+                            <span class="stag">Metasploit</span>
+                            <span class="stag">Nmap</span>
+                            <span class="stag">Nessus</span>
+                            <span class="stag">Fortify</span>
+                            <span class="stag">WebInspect</span>
+                            <span class="stag">HCL AppScan</span>
+                            <span class="stag">Frida</span>
+                            <span class="stag">MobSF</span>
+                            <span class="stag">Kali Linux</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="hgi-stroke hgi-file-01"></i>
+                        <h4>Competencies</h4>
+                        <div class="skill-tags">
+                            <span class="stag">VAPT</span>
+                            <span class="stag">Code Review</span>
+                            <span class="stag">Threat Modelling</span>
+                            <span class="stag">Bug Bounty</span>
+                            <span class="stag">Risk Assessment</span>
+                            <span class="stag">Client Reporting</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="exp-date">Apr 2020 – Present</span>
-          </div>
-          <p class="exp-desc">Selected member of Synack's elite private programme — conducting high-impact security assessments across curated enterprise targets worldwide.</p>
-        </div>
-      </div>
+        </section>
 
-      <div class="exp-item">
-        <div class="exp-dot"><i class="fas fa-bug"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Bug Bounty Platforms</div>
-              <div class="exp-role">
-                <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank" style="color:var(--accent);text-decoration:none;">Bugcrowd</a> ·
-                <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank" style="color:var(--accent);text-decoration:none;">YesWeHack</a> ·
-                HackerOne · Yogosha
-              </div>
+        <!-- ── EXPERIENCE ── -->
+        <section id="experience">
+            <div class="section-inner">
+                <p class="section-tag">// 03. experience</p>
+                <h2 class="section-title">Experience</h2>
+                <div class="section-line"></div>
+                <div class="exp-timeline">
+
+                    <div class="exp-item">
+                        <div class="exp-dot"><i class="hgi-stroke hgi-building-01"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Deloitte USI <span
+                                            class="badge-chip chip-green">Current</span></div>
+                                    <div class="exp-role">Security Consultant — Solution Delivery Associate</div>
+                                </div>
+                                <span class="exp-date">May 2023 – Present · Pune</span>
+                            </div>
+                            <p class="exp-desc">Lead end-to-end penetration testing engagements across Web Applications,
+                                APIs, Mobile (Android/iOS), Network, and Thick Client environments for global enterprise
+                                clients. Conduct Architectural &amp; Secure Code Reviews. Deliver risk-rated reports
+                                (CVSS/OWASP) for executive and technical audiences; drive remediation verification and
+                                client engagement throughout the lifecycle.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot"><i class="hgi-stroke hgi-building-01"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Deloitte USI</div>
+                                    <div class="exp-role">Security Analyst — Cyber &amp; Strategic Risk Advisory</div>
+                                </div>
+                                <span class="exp-date">Jul 2021 – May 2023 · Pune</span>
+                            </div>
+                            <p class="exp-desc">Performed manual &amp; automated penetration tests on Web Applications
+                                and APIs; identified injection flaws, authentication bypasses, and business logic
+                                vulnerabilities. Conducted Secure Code Reviews; collaborated closely with client teams
+                                on risk prioritisation and remediation.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot"><i class="hgi-stroke hgi-building-01"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Deloitte USI</div>
+                                    <div class="exp-role">Technology Analyst</div>
+                                </div>
+                                <span class="exp-date">Jan 2021 – Jun 2021 · Hyderabad</span>
+                            </div>
+                            <p class="exp-desc">Web Application &amp; API Penetration Testing with structured
+                                vulnerability reporting and PoC documentation.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot"><i class="hgi-stroke hgi-target-01"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Synack Red Team <span
+                                            class="badge-chip chip-gold">Elite</span></div>
+                                    <div class="exp-role">Red Team Member</div>
+                                </div>
+                                <span class="exp-date">Apr 2020 – Present</span>
+                            </div>
+                            <p class="exp-desc">Selected member of Synack's elite private programme — conducting
+                                high-impact security assessments across curated enterprise targets worldwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot"><i class="hgi-stroke hgi-bug-01"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Bug Bounty Platforms</div>
+                                    <div class="exp-role">
+                                        <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank"
+                                            style="color:var(--accent);text-decoration:none;">Bugcrowd</a> ·
+                                        <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank"
+                                            style="color:var(--accent);text-decoration:none;">YesWeHack</a> ·
+                                        HackerOne · Yogosha
+                                    </div>
+                                </div>
+                                <span class="exp-date">2018 – Present</span>
+                            </div>
+                            <p class="exp-desc">
+                                <span class="badge-chip chip-blue">Top 250 Bugcrowd</span>
+                                <span class="badge-chip chip-blue">Top 50 Yogosha</span>
+                                <span class="badge-chip chip-blue">Top 100 YesWeHack</span><br><br>
+                                Responsibly disclosed critical vulnerabilities (Account Takeover, IDOR, Privilege
+                                Escalation, XSS, LFI) across 100+ organisations globally. Hall of Fame recognitions from
+                                Microsoft, Apple, Google, Nokia, Intel, Pinterest, Dell Technologies, and more.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot gray"><i class="hgi-stroke hgi-graduation-scroll"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">Gurugram Police — Cyber Security Internship</div>
+                                    <div class="exp-role">Security Intern</div>
+                                </div>
+                                <span class="exp-date">Jun 2018 – Jul 2018</span>
+                            </div>
+                            <p class="exp-desc">Cyber security summer internship under Mr. Rakshit Tandon — Cyber
+                                Security Expert &amp; Consultant, Internet and Mobile Association of India.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-dot gray"><i class="hgi-stroke hgi-graduation-scroll"></i></div>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <div>
+                                    <div class="exp-company">HackersEra Cyber Security Consultancy, Pune</div>
+                                    <div class="exp-role">Security Intern</div>
+                                </div>
+                                <span class="exp-date">Jun 2019 – Jul 2019</span>
+                            </div>
+                            <p class="exp-desc">Web Application Penetration Testing under guidance of Mr. Vikas
+                                Choudhary.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <span class="exp-date">2018 – Present</span>
-          </div>
-          <p class="exp-desc">
-            <span class="badge-chip chip-blue">Top 250 Bugcrowd</span>
-            <span class="badge-chip chip-blue">Top 50 Yogosha</span>
-            <span class="badge-chip chip-blue">Top 100 YesWeHack</span><br><br>
-            Responsibly disclosed critical vulnerabilities (Account Takeover, IDOR, Privilege Escalation, XSS, LFI) across 100+ organisations globally. Hall of Fame recognitions from Microsoft, Apple, Google, Nokia, Intel, Pinterest, Dell Technologies, and more.
-          </p>
-        </div>
-      </div>
+        </section>
 
-      <div class="exp-item">
-        <div class="exp-dot gray"><i class="fas fa-graduation-cap"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Gurugram Police — Cyber Security Internship</div>
-              <div class="exp-role">Security Intern</div>
+        <!-- ── HALL OF FAME ── -->
+        <section id="hall">
+            <div class="section-inner">
+                <p class="section-tag">// 04. hall of fame</p>
+                <h2 class="section-title">Hall of Fame &amp; Responsible Disclosure</h2>
+                <div class="section-line"></div>
+                <p class="hof-intro">Recognised by the following organisations for responsibly disclosing security
+                    vulnerabilities:</p>
+                <div class="hof-grid">
+                    <span class="hof-chip hof-major">Microsoft</span>
+                    <span class="hof-chip hof-major">Apple</span>
+                    <span class="hof-chip hof-major">Google</span>
+                    <span class="hof-chip hof-major">Nokia</span>
+                    <span class="hof-chip hof-major">Intel</span>
+                    <span class="hof-chip hof-major">Pinterest</span>
+                    <span class="hof-chip hof-major">Dell Technologies</span>
+                    <span class="hof-chip hof-major">Hotstar</span>
+                    <span class="hof-chip hof-major">MasterCard</span>
+                    <span class="hof-chip hof-major">NCIIPC (Indian Govt.)</span>
+                    <span class="hof-chip hof-regular">Blackberry</span>
+                    <span class="hof-chip hof-regular">Adobe</span>
+                    <span class="hof-chip hof-regular">Red Hat</span>
+                    <span class="hof-chip hof-regular">Canva</span>
+                    <span class="hof-chip hof-regular">Oneplus</span>
+                    <span class="hof-chip hof-regular">Udacity</span>
+                    <span class="hof-chip hof-regular">EDx</span>
+                    <span class="hof-chip hof-regular">Practo</span>
+                    <span class="hof-chip hof-regular">HackerRank</span>
+                    <span class="hof-chip hof-regular">HackerEarth</span>
+                    <span class="hof-chip hof-regular">Techgig</span>
+                    <span class="hof-chip hof-regular">GeeksForGeeks</span>
+                    <span class="hof-chip hof-regular">Flock</span>
+                    <span class="hof-chip hof-regular">Pusher</span>
+                    <span class="hof-chip hof-regular">Transifex</span>
+                    <span class="hof-chip hof-regular">Airmap</span>
+                    <span class="hof-chip hof-regular">Edmodo</span>
+                    <span class="hof-chip hof-regular">Health Unlocked</span>
+                    <span class="hof-chip hof-regular">FindFriendSocial</span>
+                    <span class="hof-chip hof-private">50+ Private Programmes</span>
+                </div>
             </div>
-            <span class="exp-date">Jun 2018 – Jul 2018</span>
-          </div>
-          <p class="exp-desc">Cyber security summer internship under Mr. Rakshit Tandon — Cyber Security Expert &amp; Consultant, Internet and Mobile Association of India.</p>
-        </div>
-      </div>
+        </section>
 
-      <div class="exp-item">
-        <div class="exp-dot gray"><i class="fas fa-graduation-cap"></i></div>
-        <div class="exp-body">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">HackersEra Cyber Security Consultancy, Pune</div>
-              <div class="exp-role">Security Intern</div>
+        <!-- ── CERTIFICATIONS ── -->
+        <section id="certs">
+            <div class="section-inner">
+                <p class="section-tag">// 05. certifications</p>
+                <h2 class="section-title">Certifications &amp; Achievements</h2>
+                <div class="section-line"></div>
+                <div class="cert-grid">
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-certificate-01"></i></div>
+                        <div>
+                            <div class="cert-title">Practical Network Penetration Tester (PNPT) <span
+                                    class="new-chip">NEW</span></div>
+                            <div class="cert-issuer">TCM Security</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-certificate-01"></i></div>
+                        <div>
+                            <div class="cert-title">eWPTXv2 — Web Application Penetration Tester eXtreme</div>
+                            <div class="cert-issuer">eLearnSecurity</div>
+                            <div class="cert-id">bac70cec-cb3e-489f-a0d4-01f246947768</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-certificate-01"></i></div>
+                        <div>
+                            <div class="cert-title">eCPPTv2 — Certified Professional Penetration Tester <span
+                                    class="new-chip">NEW</span></div>
+                            <div class="cert-issuer">eLearnSecurity</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-certificate-01"></i></div>
+                        <div>
+                            <div class="cert-title">Burp Suite Certified Practitioner <span class="new-chip">NEW</span>
+                            </div>
+                            <div class="cert-issuer">PortSwigger</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-shield-half"></i></div>
+                        <div>
+                            <div class="cert-title">Certified Ethical Hacker Master (CEH Master)</div>
+                            <div class="cert-issuer">EC-Council</div>
+                            <div class="cert-id">ECC8691573204</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-certificate-01"></i></div>
+                        <div>
+                            <div class="cert-title">eJPT — Junior Penetration Tester</div>
+                            <div class="cert-issuer">eLearnSecurity</div>
+                            <div class="cert-id">7008916</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-secured-network"></i></div>
+                        <div>
+                            <div class="cert-title">Certified Network Security Practitioner (CNSP)</div>
+                            <div class="cert-issuer">The SecOps Group</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-aws-lambda"></i></div>
+                        <div>
+                            <div class="cert-title">Certified Cloud Security Practitioner — AWS (CCSP-AWS)</div>
+                            <div class="cert-issuer">The SecOps Group</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-shield-01"></i></div>
+                        <div>
+                            <div class="cert-title">Red Hat Certified System Administrator (RHCSA)</div>
+                            <div class="cert-issuer">Red Hat</div>
+                            <div class="cert-id">150-078-095</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-award-01"></i></div>
+                        <div>
+                            <div class="cert-title">Bugcrowd P1 Warrior — Q4 2019 &amp; Q1 2020</div>
+                            <div class="cert-issuer">Bugcrowd</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-medal-01"></i></div>
+                        <div>
+                            <div class="cert-title">CompTIA Strata IT Fundamentals</div>
+                            <div class="cert-issuer">CompTIA</div>
+                            <div class="cert-id">OMP001020799537</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="hgi-stroke hgi-lock"></i></div>
+                        <div>
+                            <div class="cert-title">Certified Secure Computer User (CSCU)</div>
+                            <div class="cert-issuer">EC-Council</div>
+                            <div class="cert-id">ECC21294888609</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <span class="exp-date">Jun 2019 – Jul 2019</span>
-          </div>
-          <p class="exp-desc">Web Application Penetration Testing under guidance of Mr. Vikas Choudhary.</p>
-        </div>
-      </div>
+        </section>
 
-    </div>
-  </div>
-</section>
+        <!-- ── TALKS ── -->
+        <section id="talks">
+            <div class="section-inner">
+                <p class="section-tag">// 06. talks &amp; sessions</p>
+                <h2 class="section-title">Talks &amp; Sessions</h2>
+                <div class="section-line"></div>
+                <div class="talks-grid">
+                    <div class="talk-card">
+                        <h4>Ganpat University — Feb 2019</h4>
+                        <p>Delivered a talk on Penetration Testing and Bug Bounty Hunting to students and faculty.</p>
+                    </div>
+                    <div class="talk-card">
+                        <h4>Hackers Meetup — April 2020</h4>
+                        <p>Delivered a talk on Penetration Testing and Bug Bounty at the Hackers Meetup organised by
+                            Comexpo Cyber Security.</p>
+                    </div>
+                    <div class="talk-card">
+                        <h4>Bitten Tech — Bug Bounties for Beginners</h4>
+                        <p>Online talk on getting started in Bug Bounty Hunting for the security community.</p>
+                        <a href="https://www.youtube.com/watch?v=49ltVZXF0Mc" target="_blank" class="talk-link"><i
+                            class="hgi-stroke hgi-youtube"></i> Watch Talk</a>
+                    </div>
+                    <div class="talk-card">
+                        <h4>Technical Navigator — Bug Bounties for Beginners</h4>
+                        <p>Online session on Bug Bounty Hunting fundamentals for aspiring security researchers.</p>
+                        <a href="https://www.youtube.com/watch?v=IchwW_xGM0E" target="_blank" class="talk-link"><i
+                            class="hgi-stroke hgi-youtube"></i> Watch Talk</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ── HALL OF FAME ── -->
-<section id="hall">
-  <div class="section-inner">
-    <p class="section-tag">// 04. hall of fame</p>
-    <h2 class="section-title">Hall of Fame &amp; Responsible Disclosure</h2>
-    <div class="section-line"></div>
-    <p class="hof-intro">Recognised by the following organisations for responsibly disclosing security vulnerabilities:</p>
-    <div class="hof-grid">
-      <span class="hof-chip hof-major">Microsoft</span>
-      <span class="hof-chip hof-major">Apple</span>
-      <span class="hof-chip hof-major">Google</span>
-      <span class="hof-chip hof-major">Nokia</span>
-      <span class="hof-chip hof-major">Intel</span>
-      <span class="hof-chip hof-major">Pinterest</span>
-      <span class="hof-chip hof-major">Dell Technologies</span>
-      <span class="hof-chip hof-major">Hotstar</span>
-      <span class="hof-chip hof-major">MasterCard</span>
-      <span class="hof-chip hof-major">NCIIPC (Indian Govt.)</span>
-      <span class="hof-chip hof-regular">Blackberry</span>
-      <span class="hof-chip hof-regular">Adobe</span>
-      <span class="hof-chip hof-regular">Red Hat</span>
-      <span class="hof-chip hof-regular">Canva</span>
-      <span class="hof-chip hof-regular">Oneplus</span>
-      <span class="hof-chip hof-regular">Udacity</span>
-      <span class="hof-chip hof-regular">EDx</span>
-      <span class="hof-chip hof-regular">Practo</span>
-      <span class="hof-chip hof-regular">HackerRank</span>
-      <span class="hof-chip hof-regular">HackerEarth</span>
-      <span class="hof-chip hof-regular">Techgig</span>
-      <span class="hof-chip hof-regular">GeeksForGeeks</span>
-      <span class="hof-chip hof-regular">Flock</span>
-      <span class="hof-chip hof-regular">Pusher</span>
-      <span class="hof-chip hof-regular">Transifex</span>
-      <span class="hof-chip hof-regular">Airmap</span>
-      <span class="hof-chip hof-regular">Edmodo</span>
-      <span class="hof-chip hof-regular">Health Unlocked</span>
-      <span class="hof-chip hof-regular">FindFriendSocial</span>
-      <span class="hof-chip hof-private">50+ Private Programmes</span>
-    </div>
-  </div>
-</section>
+        <!-- ── CONTENT CREATION ── -->
+        <section id="content">
+            <div class="section-inner">
+                <p class="section-tag">// 07. content creation</p>
+                <h2 class="section-title">Content Creation</h2>
+                <div class="section-line"></div>
+                <div class="cc-grid">
+                    <div class="cc-card">
+                        <div class="cc-icon">📺</div>
+                        <div class="cc-platform">YouTube</div>
+                        <div class="cc-count">26K</div>
+                        <div class="cc-label">Subscribers · Since 2015</div>
+                        <div class="cc-desc">Penetration Testing tutorials, Bug Bounty writeups, CTF walkthroughs, and
+                            Cyber Security concepts explained simply.</div>
+                        <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank"
+                            class="cc-link">Visit Channel ↗</a>
+                    </div>
+                    <div class="cc-card">
+                        <div class="cc-icon">📸</div>
+                        <div class="cc-platform">Instagram</div>
+                        <div class="cc-count">52K</div>
+                        <div class="cc-label">Followers · @i.m.pratikdabhi</div>
+                        <div class="cc-desc">Daily Cyber Security tips, tool highlights, security news, and
+                            behind-the-scenes of Bug Bounty hunting.</div>
+                        <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="cc-link">Follow
+                            ↗</a>
+                    </div>
+                    <div class="cc-card">
+                        <div class="cc-icon">✍️</div>
+                        <div class="cc-platform">Medium</div>
+                        <div class="cc-count">Blogs</div>
+                        <div class="cc-label">@impratikdabhi</div>
+                        <div class="cc-desc">In-depth Bug Bounty writeups, vulnerability walkthroughs, and beginner
+                            guides for ethical hacking.</div>
+                        <a href="https://medium.com/@impratikdabhi" target="_blank" class="cc-link">Read Blogs ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ── CERTIFICATIONS ── -->
-<section id="certs">
-  <div class="section-inner">
-    <p class="section-tag">// 05. certifications</p>
-    <h2 class="section-title">Certifications &amp; Achievements</h2>
-    <div class="section-line"></div>
-    <div class="cert-grid">
+        <!-- ── EDUCATION ── -->
+        <section id="education">
+            <div class="section-inner">
+                <p class="section-tag">// 08. education</p>
+                <h2 class="section-title">Education</h2>
+                <div class="section-line"></div>
+                <div class="edu-grid">
+                    <div class="edu-card">
+                        <i class="hgi-stroke hgi-graduation-scroll"></i>
+                        <h4>M.Sc. Digital Forensics &amp; Information Security</h4>
+                        <div class="inst">National Forensic Sciences University (NFSU)</div>
+                        <div class="yr">2019 – 2021</div>
+                    </div>
+                    <div class="edu-card">
+                        <i class="hgi-stroke hgi-laptop-programming"></i>
+                        <h4>Bachelor's in Computer Science</h4>
+                        <div class="inst">Ahmedabad University — School of Computer Studies</div>
+                        <div class="yr">2016 – 2019</div>
+                    </div>
+                    <div class="edu-card">
+                        <i class="hgi-stroke hgi-school"></i>
+                        <h4>Senior Secondary (High School)</h4>
+                        <div class="inst">St. Xavier's High School</div>
+                        <div class="yr">2009 – 2014</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="cert-title">Practical Network Penetration Tester (PNPT) <span class="new-chip">NEW</span></div>
-          <div class="cert-issuer">TCM Security</div>
-        </div>
-      </div>
+        <!-- ── BLOGS ── -->
+        <section id="blogs">
+            <div class="section-inner">
+                <p class="section-tag">// 09. blogs</p>
+                <h2 class="section-title">Blogs &amp; Writeups</h2>
+                <div class="section-line"></div>
+                <p style="color:var(--gray);margin-bottom:30px;">Read all writeups on <a
+                        href="https://medium.com/@impratikdabhi" target="_blank"
+                        style="color:var(--accent);font-weight:600;">Medium ↗</a></p>
+                <div class="blogs-grid">
+                    <a href="https://medium.com/bugbountywriteup/reflected-xss-on-microsoft-com-via-angular-template-injection-2e26d80a7fd8"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/rxss.png" alt="XSS Microsoft"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>Reflected XSS on Microsoft.com via Angular JS Template Injection</h4><span>Read on
+                                Medium ↗</span>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/bugbountywriteup/open-redirection-leads-to-a-bounty-d94029e11d17"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/open-re.png" alt="Open Redirection"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>Open Redirection Leads to a Bounty</h4><span>Read on Medium ↗</span>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/bugbountywriteup/a-picture-that-steals-your-data-a-tale-to-ip-theft-a9a2058d1392"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/pic.png" alt="IP Theft"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>A Picture That Steals Your Data — A Tale of IP Theft</h4><span>Read on Medium ↗</span>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-in-ctf-complete-begineer-guide-15ab5a6856d"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/cap.png" alt="CTF Guide"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>How to Get Started in CTF | Complete Beginner Guide</h4><span>Read on Medium ↗</span>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-in-ethical-hacking-195b5f9a6e80"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/eh.png" alt="Ethical Hacking"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>How to Get Started in Ethical Hacking</h4><span>Read on Medium ↗</span>
+                        </div>
+                    </a>
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-into-bug-bounty-1be52b3064e0"
+                        target="_blank" class="blog-card">
+                        <div class="blog-img"><img src="img/bb.png" alt="Bug Bounty"
+                                onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
+                        <div class="blog-body">
+                            <h4>How to Get Started into Bug Bounty</h4><span>Read on Medium ↗</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="cert-title">eWPTXv2 — Web Application Penetration Tester eXtreme</div>
-          <div class="cert-issuer">eLearnSecurity</div>
-          <div class="cert-id">bac70cec-cb3e-489f-a0d4-01f246947768</div>
-        </div>
-      </div>
+        <!-- ── CONTACT ── -->
+        <section id="contact">
+            <div class="section-inner">
+                <p class="section-tag">// 10. contact</p>
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="section-line"></div>
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="hgi-stroke hgi-mail-01"></i></div>
+                            <div>
+                                <p>Email</p>
+                                <a href="mailto:pratikmdabhi@gmail.com">pratikmdabhi@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="hgi-stroke hgi-linkedin-01"></i></div>
+                            <div>
+                                <p>LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/pratikmdabhi/"
+                                    target="_blank">linkedin.com/in/pratikmdabhi</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="hgi-stroke hgi-globe"></i></div>
+                            <div>
+                                <p>Website</p>
+                                <a href="https://pratikdabhi.com" target="_blank">pratikdabhi.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="contact-social-title">Find me on</div>
+                        <div class="contact-socials">
+                                <a href="https://x.com/impratikdabhi" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-new-twitter"></i> Twitter / X</a>
+                            <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-instagram"></i> Instagram</a>
+                            <a href="https://www.linkedin.com/in/pratikmdabhi/" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-linkedin-01"></i> LinkedIn</a>
+                            <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank"
+                                class="cs-btn"><i class="hgi-stroke hgi-youtube"></i> YouTube</a>
+                            <a href="https://medium.com/@impratikdabhi" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-medium"></i> Medium</a>
+                            <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-bug-01"></i> Bugcrowd</a>
+                            <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank" class="cs-btn"><i
+                                    class="hgi-stroke hgi-shield-half"></i> YesWeHack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="cert-title">eCPPTv2 — Certified Professional Penetration Tester <span class="new-chip">NEW</span></div>
-          <div class="cert-issuer">eLearnSecurity</div>
-        </div>
-      </div>
+        <!-- ── FOOTER ── -->
+        <footer>
+            <p>© 2026 Pratik Dabhi — Security Consultant | Penetration Tester | <a
+                    href="https://pratikdabhi.com">pratikdabhi.com</a></p>
+        </footer>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="cert-title">Burp Suite Certified Practitioner <span class="new-chip">NEW</span></div>
-          <div class="cert-issuer">PortSwigger</div>
-        </div>
-      </div>
+        <script src="js/main.js"></script>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-shield-halved"></i></div>
-        <div>
-          <div class="cert-title">Certified Ethical Hacker Master (CEH Master)</div>
-          <div class="cert-issuer">EC-Council</div>
-          <div class="cert-id">ECC8691573204</div>
-        </div>
-      </div>
+    </body>
 
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="cert-title">eJPT — Junior Penetration Tester</div>
-          <div class="cert-issuer">eLearnSecurity</div>
-          <div class="cert-id">7008916</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
-        <div>
-          <div class="cert-title">Certified Network Security Practitioner (CNSP)</div>
-          <div class="cert-issuer">The SecOps Group</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fab fa-aws"></i></div>
-        <div>
-          <div class="cert-title">Certified Cloud Security Practitioner — AWS (CCSP-AWS)</div>
-          <div class="cert-issuer">The SecOps Group</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-        <div>
-          <div class="cert-title">Red Hat Certified System Administrator (RHCSA)</div>
-          <div class="cert-issuer">Red Hat</div>
-          <div class="cert-id">150-078-095</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-trophy"></i></div>
-        <div>
-          <div class="cert-title">Bugcrowd P1 Warrior — Q4 2019 &amp; Q1 2020</div>
-          <div class="cert-issuer">Bugcrowd</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-medal"></i></div>
-        <div>
-          <div class="cert-title">CompTIA Strata IT Fundamentals</div>
-          <div class="cert-issuer">CompTIA</div>
-          <div class="cert-id">OMP001020799537</div>
-        </div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-lock"></i></div>
-        <div>
-          <div class="cert-title">Certified Secure Computer User (CSCU)</div>
-          <div class="cert-issuer">EC-Council</div>
-          <div class="cert-id">ECC21294888609</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── TALKS ── -->
-<section id="talks">
-  <div class="section-inner">
-    <p class="section-tag">// 06. talks &amp; sessions</p>
-    <h2 class="section-title">Talks &amp; Sessions</h2>
-    <div class="section-line"></div>
-    <div class="talks-grid">
-      <div class="talk-card">
-        <h4>Ganpat University — Feb 2019</h4>
-        <p>Delivered a talk on Penetration Testing and Bug Bounty Hunting to students and faculty.</p>
-      </div>
-      <div class="talk-card">
-        <h4>Hackers Meetup — April 2020</h4>
-        <p>Delivered a talk on Penetration Testing and Bug Bounty at the Hackers Meetup organised by Comexpo Cyber Security.</p>
-      </div>
-      <div class="talk-card">
-        <h4>Bitten Tech — Bug Bounties for Beginners</h4>
-        <p>Online talk on getting started in Bug Bounty Hunting for the security community.</p>
-        <a href="https://www.youtube.com/watch?v=49ltVZXF0Mc" target="_blank" class="talk-link"><i class="fab fa-youtube"></i> Watch Talk</a>
-      </div>
-      <div class="talk-card">
-        <h4>Technical Navigator — Bug Bounties for Beginners</h4>
-        <p>Online session on Bug Bounty Hunting fundamentals for aspiring security researchers.</p>
-        <a href="https://www.youtube.com/watch?v=IchwW_xGM0E" target="_blank" class="talk-link"><i class="fab fa-youtube"></i> Watch Talk</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTENT CREATION ── -->
-<section id="content">
-  <div class="section-inner">
-    <p class="section-tag">// 07. content creation</p>
-    <h2 class="section-title">Content Creation</h2>
-    <div class="section-line"></div>
-    <div class="cc-grid">
-      <div class="cc-card">
-        <div class="cc-icon">📺</div>
-        <div class="cc-platform">YouTube</div>
-        <div class="cc-count">26K</div>
-        <div class="cc-label">Subscribers · Since 2015</div>
-        <div class="cc-desc">Penetration Testing tutorials, Bug Bounty writeups, CTF walkthroughs, and Cyber Security concepts explained simply.</div>
-        <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank" class="cc-link">Visit Channel ↗</a>
-      </div>
-      <div class="cc-card">
-        <div class="cc-icon">📸</div>
-        <div class="cc-platform">Instagram</div>
-        <div class="cc-count">52K</div>
-        <div class="cc-label">Followers · @i.m.pratikdabhi</div>
-        <div class="cc-desc">Daily Cyber Security tips, tool highlights, security news, and behind-the-scenes of Bug Bounty hunting.</div>
-        <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="cc-link">Follow ↗</a>
-      </div>
-      <div class="cc-card">
-        <div class="cc-icon">✍️</div>
-        <div class="cc-platform">Medium</div>
-        <div class="cc-count">Blogs</div>
-        <div class="cc-label">@impratikdabhi</div>
-        <div class="cc-desc">In-depth Bug Bounty writeups, vulnerability walkthroughs, and beginner guides for ethical hacking.</div>
-        <a href="https://medium.com/@impratikdabhi" target="_blank" class="cc-link">Read Blogs ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── EDUCATION ── -->
-<section id="education">
-  <div class="section-inner">
-    <p class="section-tag">// 08. education</p>
-    <h2 class="section-title">Education</h2>
-    <div class="section-line"></div>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <i class="fas fa-graduation-cap"></i>
-        <h4>M.Sc. Digital Forensics &amp; Information Security</h4>
-        <div class="inst">National Forensic Sciences University (NFSU)</div>
-        <div class="yr">2019 – 2021</div>
-      </div>
-      <div class="edu-card">
-        <i class="fas fa-laptop-code"></i>
-        <h4>Bachelor's in Computer Science</h4>
-        <div class="inst">Ahmedabad University — School of Computer Studies</div>
-        <div class="yr">2016 – 2019</div>
-      </div>
-      <div class="edu-card">
-        <i class="fas fa-school"></i>
-        <h4>Senior Secondary (High School)</h4>
-        <div class="inst">St. Xavier's High School</div>
-        <div class="yr">2009 – 2014</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── BLOGS ── -->
-<section id="blogs">
-  <div class="section-inner">
-    <p class="section-tag">// 09. blogs</p>
-    <h2 class="section-title">Blogs &amp; Writeups</h2>
-    <div class="section-line"></div>
-    <p style="color:var(--gray);margin-bottom:30px;">Read all writeups on <a href="https://medium.com/@impratikdabhi" target="_blank" style="color:var(--accent);font-weight:600;">Medium ↗</a></p>
-    <div class="blogs-grid">
-      <a href="https://medium.com/bugbountywriteup/reflected-xss-on-microsoft-com-via-angular-template-injection-2e26d80a7fd8" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/rxss.png" alt="XSS Microsoft" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>Reflected XSS on Microsoft.com via Angular JS Template Injection</h4><span>Read on Medium ↗</span></div>
-      </a>
-      <a href="https://medium.com/bugbountywriteup/open-redirection-leads-to-a-bounty-d94029e11d17" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/open-re.png" alt="Open Redirection" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>Open Redirection Leads to a Bounty</h4><span>Read on Medium ↗</span></div>
-      </a>
-      <a href="https://medium.com/bugbountywriteup/a-picture-that-steals-your-data-a-tale-to-ip-theft-a9a2058d1392" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/pic.png" alt="IP Theft" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>A Picture That Steals Your Data — A Tale of IP Theft</h4><span>Read on Medium ↗</span></div>
-      </a>
-      <a href="https://medium.com/bugbountywriteup/how-to-get-started-in-ctf-complete-begineer-guide-15ab5a6856d" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/cap.png" alt="CTF Guide" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>How to Get Started in CTF | Complete Beginner Guide</h4><span>Read on Medium ↗</span></div>
-      </a>
-      <a href="https://medium.com/bugbountywriteup/how-to-get-started-in-ethical-hacking-195b5f9a6e80" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/eh.png" alt="Ethical Hacking" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>How to Get Started in Ethical Hacking</h4><span>Read on Medium ↗</span></div>
-      </a>
-      <a href="https://medium.com/bugbountywriteup/how-to-get-started-into-bug-bounty-1be52b3064e0" target="_blank" class="blog-card">
-        <div class="blog-img"><img src="img/bb.png" alt="Bug Bounty" onerror="this.parentElement.style.background='#EFF6FF';this.style.display='none'"></div>
-        <div class="blog-body"><h4>How to Get Started into Bug Bounty</h4><span>Read on Medium ↗</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="section-inner">
-    <p class="section-tag">// 10. contact</p>
-    <h2 class="section-title">Get in Touch</h2>
-    <div class="section-line"></div>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-info-item">
-          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <p>Email</p>
-            <a href="mailto:pratikmdabhi@gmail.com">pratikmdabhi@gmail.com</a>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="ci-icon"><i class="fab fa-linkedin-in"></i></div>
-          <div>
-            <p>LinkedIn</p>
-            <a href="https://www.linkedin.com/in/pratikmdabhi/" target="_blank">linkedin.com/in/pratikmdabhi</a>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="ci-icon"><i class="fas fa-globe"></i></div>
-          <div>
-            <p>Website</p>
-            <a href="https://pratikdabhi.com" target="_blank">pratikdabhi.com</a>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="contact-social-title">Find me on</div>
-        <div class="contact-socials">
-          <a href="https://x.com/impratikdabhi" target="_blank" class="cs-btn"><i class="fab fa-x-twitter"></i> Twitter / X</a>
-          <a href="https://www.instagram.com/i.m.pratikdabhi/" target="_blank" class="cs-btn"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://www.linkedin.com/in/pratikmdabhi/" target="_blank" class="cs-btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-          <a href="https://www.youtube.com/channel/UCszyA_7DVMz63bI30NW2a_g" target="_blank" class="cs-btn"><i class="fab fa-youtube"></i> YouTube</a>
-          <a href="https://medium.com/@impratikdabhi" target="_blank" class="cs-btn"><i class="fab fa-medium"></i> Medium</a>
-          <a href="https://bugcrowd.com/h/pratikdabhi" target="_blank" class="cs-btn"><i class="fas fa-bug"></i> Bugcrowd</a>
-          <a href="https://yeswehack.com/hunters/pratikdabhi" target="_blank" class="cs-btn"><i class="fas fa-shield-halved"></i> YesWeHack</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <p>© 2026 Pratik Dabhi — Security Consultant | Penetration Tester | <a href="https://pratikdabhi.com">pratikdabhi.com</a></p>
-</footer>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
-
-  // Active nav link on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-    });
-  });
-
-  // Smooth fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.skill-card, .exp-body, .cert-card, .talk-card, .cc-card, .edu-card, .blog-card, .stat-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
-
-</body>
 </html>
